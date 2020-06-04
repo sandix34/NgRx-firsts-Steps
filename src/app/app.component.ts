@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Todo } from './shared/models/todo.model';
+import { TodoService } from './shared/services/todo.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NgRx-firsts-steps';
+  public todos$: Observable<Todo[]> = this.todoService.todos$.asObservable();
+  public message: string;
+
+  constructor(private todoService: TodoService) {}
+
+  public addTodo() {
+    this.todoService.addTodo({ message: this.message, done: false });
+  }
+
+  public toggleTodo(index: number) {
+    this.todoService.toggleTodo(index);
+  }
+
+  public deleteTodo(index: number) {
+    console.log(index);
+    this.todoService.deleteTodo(index);
+  }
+
 }
