@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TodoService } from './shared/services/todo.service';
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TodoService } from './shared/services/todo.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     TodoService
