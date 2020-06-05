@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TodoService } from './shared/services/todo.service';
 import { StoreModule } from '@ngrx/store';
+import { reducers } from './shared/store/todos.reducers';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     FormsModule,
     FlexLayoutModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(reducers)
   ],
   providers: [
     TodoService
