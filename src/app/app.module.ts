@@ -9,7 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TodoService } from './shared/services/todo.service';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './shared/store/todos.reducers';
+import { reducers } from './shared/store';
 
 
 @NgModule({
