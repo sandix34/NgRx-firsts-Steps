@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './shared/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { reducers } from './shared/store';
     AppRoutingModule,
     FormsModule,
     FlexLayoutModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
   ],
