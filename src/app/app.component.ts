@@ -4,6 +4,8 @@ import { Todo } from './shared/models/todo.model';
 import { TodoService } from './shared/services/todo.service';
 import { Store } from '@ngrx/store';
 import { State } from './shared/store';
+// import de toutes les actions avec l'alias todosActions
+import * as todosAction from './shared/store/todos.actions'
 
 @Component({
   selector: 'app-root',
@@ -18,19 +20,17 @@ export class AppComponent {
 
   public addTodo() {
     // this.todoService.addTodo({ message: this.message, done: false });
-    this.store.dispatch({
-      type: '[todo] create',
-      payload: { message: this.message, done: false }
-    })
+    this.store.dispatch(new todosAction.CreateTodo({ message: this.message, done: false }));
   }
 
   public toggleTodo(index: number) {
-    this.todoService.toggleTodo(index);
+    //this.todoService.toggleTodo(index);
+    this.store.dispatch(new todosAction.ToggleTodo(index));
   }
 
   public deleteTodo(index: number) {
     console.log(index);
-    this.todoService.deleteTodo(index);
+    //this.todoService.deleteTodo(index);
+    this.store.dispatch(new todosAction.DeleteTodo(index));
   }
-
 }
