@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Todo } from './shared/models/todo.model';
 import { Store, select } from '@ngrx/store';
@@ -13,7 +13,7 @@ import { TodoState } from './shared/store/todos.reducers'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public todos$: Observable<Todo[]> = this.store.pipe(
     select('todos'),
     map( (todoState: TodoState) => todoState.datas)
@@ -21,6 +21,11 @@ export class AppComponent {
   public message: string;
 
   constructor(private store: Store<State>) {}
+
+  // déclencher le chargement des todos dès que le composant est affiché
+  ngOnInit() {
+    this.store.dispatch(new todosAction.FetchTodo());
+  }
 
   public addTodo() {
     this.store.dispatch(new todosAction.CreateTodo({ message: this.message, done: false }));
