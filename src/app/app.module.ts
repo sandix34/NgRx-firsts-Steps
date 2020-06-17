@@ -11,6 +11,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './shared/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoService } from './shared/services/todo.service';
 
 
 @NgModule({
@@ -23,9 +25,11 @@ import { environment } from '../environments/environment';
     FormsModule,
     FlexLayoutModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [
+    TodoService
   ],
   bootstrap: [AppComponent]
 })
