@@ -2,19 +2,20 @@
 import { Todo } from '../models/todo.model';
 import * as todosAction from './todos.actions';
 
-// état constitué d'un tableau de todos
+// état constitué d'un tableau de todos, et de propriétés concernant la requête de récupération
 export interface TodoState {
   datas: Todo[];
+  loading: boolean;
+  loaded: boolean;
+  error: any
 }
 
 // ajout d'un état initial pour éviter que le store soit undefined
 const initialState = {
-  datas: [
-    {
-      message: 'manger une pizza',
-      done: false
-    }
-  ]
+  datas: null,
+  loading: false,
+  loaded: false,
+  error: null
 }; 
 
 // fonction reducer qui prend l'état de l'application, effectue des modifications dessus en fonction des actions et retourne un nouvel objet qui est le nouvel état de l'application
