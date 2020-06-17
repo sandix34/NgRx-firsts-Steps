@@ -9,6 +9,30 @@ export const TODO_CREATE = '[todo] create';
 export const TODO_DELETE = '[todo] delete';
 export const TODO_TOGGLE = '[todo] toggle';
 
+// lancer la requête de récupération des todos
+export const FETCH_TODO = '[todo] fetch';
+// succès de la requête
+export const FETCH_TODO_SUCCESS = '[todo] fetch success';
+// échec de la récupération
+export const FETCH_TODO_ERROR = '[todo] fetch error';
+
+// ne contient pas de payload car elle sert seulement à déclencher la requête
+export class FetchTodo implements Action {
+  readonly type = FETCH_TODO;
+}
+
+// contient un tableau avec les todos récupérées
+export class FetchTodoSuccess implements Action {
+  readonly type = FETCH_TODO_SUCCESS;
+  constructor(public payload: Todo[]) {}
+}
+
+// contient les éventuelles erreurs
+export class FetchTodoError implements Action {
+  readonly type = FETCH_TODO_ERROR;
+  constructor(public payload: any) {}
+}
+
 
 // s'assurer que les payload des actions contiennent bien les bonnes propiétés en les typant
 // utilisation des classes avec Typescript qui implémente l'interface Action
@@ -30,4 +54,7 @@ export class ToggleTodo implements Action {
 // créer un type qui contient toutes les classes avec une union de types permise par Typescript
 export type TodosActionType = CreateTodo |
                               DeleteTodo |
-                              ToggleTodo;
+                              ToggleTodo |
+                              FetchTodo |
+                              FetchTodoSuccess |
+                              FetchTodoError;
