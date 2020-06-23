@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { TodoService } from './shared/services/todo.service';
 import { TodosEffects } from './shared/store/todos.effects';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
     FlexLayoutModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([TodosEffects])
+    EffectsModule.forRoot([TodosEffects]),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     TodoService
