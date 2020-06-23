@@ -15,7 +15,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { TodoService } from './shared/services/todo.service';
 import { TodosEffects } from './shared/store/todos.effects';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { MyRouterStateSerializer } from './shared/store/router.helper';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [
-    TodoService
+    TodoService,
+    { provide: RouterStateSerializer, useClass: MyRouterStateSerializer }
   ],
   bootstrap: [AppComponent]
 })
