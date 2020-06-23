@@ -14,11 +14,13 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { TodoService } from './shared/services/todo.service';
 import { TodosEffects } from './shared/store/todos.effects';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
