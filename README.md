@@ -1,4 +1,6 @@
-# NgRxFirstsSteps
+# NgRx Firsts Steps
+
+![ngrx](https://user-images.githubusercontent.com/44428775/85584137-2947fd00-b63f-11ea-8104-a18dd8f81ed3.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
