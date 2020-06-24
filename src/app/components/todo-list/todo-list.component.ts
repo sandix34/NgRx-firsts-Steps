@@ -5,8 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { State } from '../../shared/store';
 // import de toutes les actions avec l'alias todosActions
 import * as todosAction from '../../shared/store/todos.actions'
-import { map } from 'rxjs/operators';
-import { TodoState } from '../../shared/store/todos.reducers'
+import { todoListSelector, selectedTodoSelector } from 'src/app/shared/store/selectors';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,11 +14,10 @@ import { TodoState } from '../../shared/store/todos.reducers'
 })
 export class TodoListComponent implements OnInit {
 
-  public todos$: Observable<Todo[]> = this.store.pipe(
-    select('todos'),
-    map( (todoState: TodoState) => todoState.datas)
-  );
+  public todos$: Observable<Todo[]> = this.store.pipe(select(todoListSelector));
   public message: string;
+  public selectedTodo$: Observable<Todo> = this.store.pipe(select(selectedTodoSelector));
+
 
   constructor(private store: Store<State>) {}
 
